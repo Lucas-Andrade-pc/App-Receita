@@ -1,14 +1,32 @@
+import 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import * as Font from 'expo-font'
+import AppLoading from 'expo-app-loading'
+
+import MealsNavigator from './src/navigation/MealsNavigator';
+
+const fetchFont = () =>{
+  return Font.loadAsync({
+    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf')
+  })
+}
 
 export default function App() {
+
+  const [fontLoaded, setFontLoaded] = useState(false)
+
+  if(!fontLoaded){
+    return <AppLoading startAsync={fetchFont} onFinish={() => setFontLoaded(true)} onError={console.warn} />
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+      <MealsNavigator />
+    
+  )
+  
 }
 
 const styles = StyleSheet.create({
@@ -17,5 +35,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
