@@ -6,18 +6,24 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import MealDetailsScreen from '../screens/MealDetailsScreen'
 
+import Colors from '../constant/Color'
+
 const Stack = createNativeStackNavigator();
 
 const MealsNavigator = () => {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Meals" component={CategoriesScreen}/>
-                <Stack.Screen name="CategoriesMeals" component={CategoryMealsScreen}/>
-                <Stack.Screen name="Meals Details" component={MealDetailsScreen}/>
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='CategoriesScreen'>
+        <Stack.Screen name="Meals" component={CategoriesScreen} options={{headerStyle: {
+          backgroundColor: Colors.primary
+        },
+        headerTintColor: '#fff',
+        }}/>
+        <Stack.Screen name="CategoriesMeals" component={CategoryMealsScreen} options={({route}) => ({title: route.params.category.title})} />
+        <Stack.Screen name="Meals Details" component={MealDetailsScreen}/>
+        </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
 export default MealsNavigator;
