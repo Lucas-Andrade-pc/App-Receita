@@ -12,16 +12,15 @@ const CategoryMealsScreen = (props) => {
   return (
       <View style={styles.screen}>
           <Text>The category Meals screen</Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Meals Details')}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Meals Details', {category: props.route.params.category})}>
               <Text>{selected.title}</Text>
           </TouchableOpacity>
       </View>
   )
 }
 
-CategoryMealsScreen.navigationOption={
-    headerTitle: 'brigadeiro'
-    
+CategoryMealsScreen.navigationOption = (navigationData) => {
+  console.log(navigationData)
 }
 
 const styles = StyleSheet.create({

@@ -14,14 +14,30 @@ const MealsNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='CategoriesScreen'>
-        <Stack.Screen name="Meals" component={CategoriesScreen} options={{headerStyle: {
+        <Stack.Screen name="Meals" 
+        component={CategoriesScreen} 
+        options={{headerStyle: {
           backgroundColor: Colors.primary
         },
         headerTintColor: '#fff',
         }}/>
-        <Stack.Screen name="CategoriesMeals" component={CategoryMealsScreen} options={({route}) => ({title: route.params.category.title})} />
-        <Stack.Screen name="Meals Details" component={MealDetailsScreen}/>
-        </Stack.Navigator>
+        <Stack.Screen name="CategoriesMeals" 
+        component={CategoryMealsScreen}
+         options={({route}) => ({title: route.params.category.title, headerStyle:{
+          backgroundColor: Colors.primary
+         },
+         headerTintColor: '#fff'
+         })} />
+        
+        <Stack.Screen name="Meals Details" 
+        component={MealDetailsScreen}
+        options={({route}) => ({title: route.params.category.title, headerStyle:{
+          backgroundColor: Colors.primary
+         },
+         headerTintColor: '#fff'
+         })}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }
