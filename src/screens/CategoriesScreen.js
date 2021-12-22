@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet } from 'react-native';
+import {View, FlatList, StyleSheet } from 'react-native';
 import Categorys from '../data/categoryData';
 import CategoryGrid from '../components/CategoryGrid';
 
@@ -8,9 +8,9 @@ const CategoriesScreen = ({navigation}) => {
   
   const renderItemCategory = (item) =>{
     return (
-      <CategoryGrid item={item}/>
-        )
-    }
+        <CategoryGrid item={item} onPress={navigation} />
+    )
+  }
 
   return (
     <>

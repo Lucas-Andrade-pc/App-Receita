@@ -14,7 +14,7 @@ const MealsNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='CategoriesScreen'>
-        <Stack.Screen name="Meals" 
+        <Stack.Screen name="Meals Categories" 
         component={CategoriesScreen} 
         options={{headerStyle: {
           backgroundColor: Colors.primary
