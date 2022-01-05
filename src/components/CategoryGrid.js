@@ -1,48 +1,56 @@
-import React from 'react'
-import { View, Text, StyleSheet, TouchableNativeFeedback,Image } from 'react-native';
+import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableNativeFeedback,
+  Image,
+} from "react-native";
 
-const CategoryGrid = ({item,onPress}) =>{
-  console.log(item)
+const CategoryGrid = ({ item, navigation }) => {
   return (
     <View style={styles.grid}>
-      <TouchableNativeFeedback style={{flex: 1}} 
-          onPress={() => onPress.navigate('CategoriesMeals', 
-          {category: item})} >
-          <View style={styles.screen}>
-            <Text style={styles.text}>{item.title}</Text>
-            <Image source={{uri: item.image}} resizeMode="cover" style={styles.image} />
-          </View>
-        </TouchableNativeFeedback>
-      </View>
-  )
-}
+      <TouchableNativeFeedback
+        style={{ flex: 1, elevation: 2 }}
+        onPress={() =>
+          navigation.navigate("CategoriesMeals", { category: item })
+        }
+      >
+        <View style={styles.screen}>
+          <Text style={styles.text}>{item.title}</Text>
+          <Image
+            source={{ uri: item.image }}
+            resizeMode="cover"
+            style={styles.image}
+          />
+        </View>
+      </TouchableNativeFeedback>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   grid: {
     flex: 1,
-    margin:20,
+    margin: 20,
     height: 140,
-
   },
-  screen:{
+  screen: {
     flex: 1,
-    elevation: 1,
     marginVertical: 10,
     borderRadius: 10,
-    alignItems: 'center'
-  
+    alignItems: "center",
   },
-  text:{
-    fontFamily: 'Roboto-Regular',
+  text: {
+    fontFamily: "Roboto-Regular",
     fontSize: 18,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
-  image:{
-    width: '100%', 
-    height: '100%',
+  image: {
+    width: "100%",
+    height: "100%",
     borderRadius: 10,
-
-  }
-})
+  },
+});
 
 export default CategoryGrid;

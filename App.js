@@ -5,7 +5,11 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading'
 
-import MealsNavigator from './src/navigation/MealsNavigator';
+import MealsNavigatorTabs from './src/navigation/MealsNavigatorTabs';
+
+import Reducer from './src/store/reducers';
+import {createStore, combineReducers} from 'redux'
+import {Provider} from 'react-redux'
 
 const fetchFont = () =>{
   return Font.loadAsync({
@@ -13,6 +17,11 @@ const fetchFont = () =>{
     'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf')
   })
 }
+
+const rootReducer = combineReducers({
+  meals: Reducer
+})
+const store = createStore(rootReducer);
 
 export default function App() {
 
@@ -23,7 +32,10 @@ export default function App() {
   }
 
   return (
-      <MealsNavigator />
+    <Provider store={store}>
+      <MealsNavigatorTabs />
+      <StatusBar style='light' />
+    </Provider>
     
   )
   
