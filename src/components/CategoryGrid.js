@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 const CategoryGrid = ({ item, navigation }) => {
+  
   return (
     <View style={styles.grid}>
       <TouchableNativeFeedback

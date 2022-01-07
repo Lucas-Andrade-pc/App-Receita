@@ -13,21 +13,15 @@ import {
 
 import ButtonHeader from "../components/HeaderButton";
 import Categorys from "../service/categoryData";
+import MealsCategory from "../components/MealsCategory";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const CategoryMealsScreen = (props) => {
   const catId = props.route.params.category.id;
-  const time = props.route.params.category.time;
-  const image = props.route.params.category.image;
-  const [textPreparation, setTextPreparation] = useState(
-    props.route.params.category.Preparation
-  );
-  const [ingredients, setIngredientes] = useState(
-    props.route.params.category.Ingredients
-  );
-
+  const meals = props.route.params.category.meals;
+  
   const selected = Categorys.find((cat) => cat.id === catId);
   React.useLayoutEffect(() => {
     props.navigation.setOptions({
@@ -37,51 +31,15 @@ const CategoryMealsScreen = (props) => {
   return (
     <>
       <View style={styles.screen}>
-        <ImageBackground source={{ uri: image }} style={styles.image}>
+        {/* <ImageBackground source={{ uri: image }} style={styles.image}>
           <View style={styles.containerTextBackground}>
             <Text style={styles.textBackGround}>{time}</Text>
-          </View>
-        </ImageBackground>
-        <ScrollView>
-          <Text style={styles.textTitle}>
-            {props.route.params.category.title}
-          </Text>
-          <View style={{ marginVertical: 10, paddingLeft: 10 }}>
-            {ingredients?.map((item) => (
-              <View
-                key={item}
-                style={{
-                  padding: 10,
-                  elevation: 2,
-                  borderWidth: 1,
-                  borderColor: "#ccc",
-                  marginVertical: 10,
-                }}
-              >
-                <Text style={styles.textIngredients} key={item}>
-                  {item}
-                </Text>
-              </View>
-            ))}
-          </View>
-          <View style={{ marginVertical: 10, paddingLeft: 10 }}>
-            {textPreparation?.map((item) => (
-              <View
-                key={item}
-                style={{
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: "#ccc",
-                  marginVertical: 10,
-                }}
-              >
-                <Text style={styles.textPre} key={item}>
-                  {item}
-                </Text>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+          </View> */}
+        {/* </ImageBackground> */}
+        <FlatList
+          data={meals}
+          renderItem={({ item, index }) => <MealsCategory item={item} navigation={props.navigation}/>}
+        />
       </View>
     </>
   );

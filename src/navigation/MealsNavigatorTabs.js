@@ -17,11 +17,11 @@ const MealsNavigatorTabs = () => {
       <NavigationContainer>
         <Tab.Navigator screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#370c5c',
+          backgroundColor: Color.primary,
           borderTopColor: 'transparent',
         },
         tabBarActiveTintColor: Color.primary,
-        tabBarInactiveTintColor: 'gray',
+        tabBarInactiveTintColor: Color.black,
         
       }}>
             <Tab.Screen name='Home' options={{header: () => (null),
