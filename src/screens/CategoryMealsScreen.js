@@ -23,11 +23,8 @@ const CategoryMealsScreen = (props) => {
   const meals = props.route.params.category.meals;
   
   const selected = Categorys.find((cat) => cat.id === catId);
-  React.useLayoutEffect(() => {
-    props.navigation.setOptions({
-      headerRight: () => <ButtonHeader navigation={props.navigation} />,
-    });
-  }, [props.navigation]);
+  
+  
   return (
     <>
       <View style={styles.screen}>
@@ -36,6 +33,7 @@ const CategoryMealsScreen = (props) => {
             <Text style={styles.textBackGround}>{time}</Text>
           </View> */}
         {/* </ImageBackground> */}
+        
         <FlatList
           data={meals}
           renderItem={({ item, index }) => <MealsCategory item={item} navigation={props.navigation}/>}

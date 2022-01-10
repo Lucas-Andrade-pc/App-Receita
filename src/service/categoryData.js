@@ -6,6 +6,7 @@ const Categorys = [
       "https://www.receiteria.com.br/wp-content/uploads/receitas-de-comidas-italianas-0.jpg",
     meals: [
       {
+        id: 'dasfskdfjbk',
         title: "Massa de pizza italiana deliciosa",
         image:
           "http://s2.glbimg.com/k29Fz1GvH1bxCC3YTFY5-8Zt_1I=/640x413/smart/e.glbimg.com/og/ed/f/original/2017/06/30/pizza-de-camarao.jpg",
@@ -32,6 +33,7 @@ const Categorys = [
           "coloque a água aos poucos, talvez não seja necessário colocar toda, sove a massa no minimo por dez minutos.",
       },
       {
+        id: 'diosfjadsoifpaosd',
         title: "Thick Italian Hot Chocolate",
         image:
           "https://anitalianinmykitchen.com/wp-content/uploads/2016/11/hot-chocolate-photo-.jpg",
@@ -51,6 +53,7 @@ const Categorys = [
         time: "25 min",
       },
       {
+        id: 'rtrlgvvfbgf',
         title: "Calzone",
         image: "https://i.ytimg.com/vi/bWi2BDQKysY/maxresdefault.jpg",
         ing: "Ingredients",

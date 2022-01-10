@@ -1,62 +1,77 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  FlatList,
+  ScrollView,
+} from "react-native";
+import Details from "../components/Details";
+import ButtonHeader from "../components/HeaderButton";
 
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const MealDetailsScreen = (props) => {
+  const title = props.route.params.category.title;
+  const ingredients = props.route.params.category.Ingredients;
+  const preparativos = props.route.params.category.Preparation;
+  const image = props.route.params.category.image;
+
+  React.useLayoutEffect(() => {
+    props.navigation.setOptions({
+      headerRight: () => <ButtonHeader navigation={props.navigation} />,
+    });
+  }, [props.navigation]);
+
   return (
+    <ScrollView>
       <View style={styles.screen}>
-          <Text>The meals details screen</Text>
+        <Image
+          style={styles.image}
+          source={{ uri: image }}
+          resizeMode="contain"
+        />
+
+        <View style={styles.containerTitle}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+        <View>
+          <FlatList
+            data={ingredients}
+            renderItem={({ item }) => <Details item={item} />}
+            keyExtractor={({ index }) => index}
+          />
+        </View>
+        <View>
+          <FlatList
+            data={preparativos}
+            renderItem={({ item }) => <Details item={item} />}
+            keyExtractor={({ index }) => index}
+          />
+        </View>
       </View>
-  )
-}
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
-    screen:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-
-})
+  screen: {},
+  image: {
+    width: windowWidth,
+    height: windowHeight / 3,
+  },
+  containerTitle:{
+    marginVertical: 20,
+  },
+  title:{
+    fontFamily: 'Roboto-Regular',
+    fontStyle: 'italic',
+    fontSize: 25,
+    padding: 5,
+  }
+});
 
 export default MealDetailsScreen;
-
-{/* <Text style={styles.textTitle}>
-            {props.route.params.category.title}
-          </Text>
-          <View style={{ marginVertical: 10, paddingLeft: 10 }}>
-            <Text style={{fontFamily: 'Roboto-Regular',fontSize: 25}}>{ingr}</Text>
-            {ingredients?.map((item) => (
-              <View
-                key={item}
-                style={{
-                  padding: 10,
-                  elevation: 1,
-                  borderWidth: 1,
-                  borderColor: "#ccc",
-                  marginVertical: 10,
-                }}
-              >
-                <Text style={styles.textIngredients} key={item}>
-                  {item}
-                </Text>
-              </View>
-            ))}
-          </View>
-          <View style={{ marginVertical: 10, paddingLeft: 10 }}>
-            {textPreparation?.map((item) => (
-              <View
-                key={item}
-                style={{
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: "#ccc",
-                  marginVertical: 10,
-                }}
-              >
-                <Text style={styles.textPre} key={item}>
-                  {item}
-                </Text>
-              </View>
-            ))}
-          </View> */}
